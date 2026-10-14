@@ -1,0 +1,35 @@
+name: intentional-regression-proof
+on:
+  workflow_dispatch:
+    inputs:
+      defect:
+        description: Deliberately fail the required gate; this workflow should be red
+        required: true
+        default: completion
+        type: choice
+        options: [completion, cost, policy, secret, container]
+permissions:
+  contents: read
+jobs:
+  reject-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.lock .
+      - name: Prepare deliberately invalid candidate
+        env:
+          DEFECT: ${{ inputs.defect }}
+        run: python scripts/prepare_candidate.py --target .work/regression --mutation "$DEFECT"
+      - name: Required gate must fail here
+        run: ai-gates --target .work/regression --output .gates/regression-proof
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: intentional-regression-evidence
+          path: .gates/
+          include-hidden-files: true
+          retention-days: 14

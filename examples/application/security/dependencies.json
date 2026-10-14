@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "tool": "pip-audit",
+  "tool_version": "2.10.1",
+  "advisory_source": "https://pypi.org",
+  "audited_at": "2026-10-14T06:25:42.142494+00:00",
+  "requirements_sha256": "d1d4bf194572f1d467cbdd9b09aef63bacc854a4b18376e1cc291dcd7bac7abc",
+  "report": {
+    "dependencies": [
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "vulns": []
+      }
+    ],
+    "fixes": []
+  }
+}

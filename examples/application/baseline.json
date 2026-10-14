@@ -1,0 +1,9 @@
+{
+  "version": "approved-fixture-v1",
+  "suite_sha256": "a222045a8a435dc647a747f668f37282ebc80b9d809a51965ce65a4f911ab6b6",
+  "cases": {
+    "sum": true,
+    "stock": true,
+    "recovery": true
+  }
+}

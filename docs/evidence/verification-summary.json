@@ -1,0 +1,310 @@
+{
+  "project": 7,
+  "name": "ai-native-cicd-gates",
+  "verified_at": "2026-10-14T06:37:34.823829+00:00",
+  "published": false,
+  "remote_ci_verified": false,
+  "windows_full_suite": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "sha256": "86e0c005f0c1a5c780545221230260e2dca8d18f5c07fe9b7e889a102c3898ce"
+  },
+  "linux_clean_wheel_portable_suite": {
+    "tests": 30,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "sha256": "091795742a1168575a6bb69cf9d3e8663e8393e4e4de8581341bfe89f2ad89c7",
+    "deselected": 1,
+    "full_docker_profile": false
+  },
+  "baseline": {
+    "state": "PASSED",
+    "gates": {
+      "unit_tests": "PASSED",
+      "integration_tests": "PASSED",
+      "secret_scan": "PASSED",
+      "dependency_security": "PASSED",
+      "gitleaks_scan": "PASSED",
+      "container_build": "PASSED",
+      "schema_validation": "PASSED",
+      "task_completion": "PASSED",
+      "latency": "PASSED",
+      "cost": "PASSED",
+      "policy_violations": "PASSED",
+      "evaluation_regression": "PASSED"
+    },
+    "benchmark": [
+      {
+        "case_id": "sum",
+        "latency_ms": 432.68349999561906,
+        "schema_valid": true,
+        "completed": true,
+        "policy_violations": 0,
+        "cost_nusd": 0,
+        "error": null,
+        "output": {
+          "case_id": "sum",
+          "state": "SUCCEEDED",
+          "value": 12,
+          "attempts": 1,
+          "tool_calls": [
+            {
+              "name": "math.add",
+              "arguments": {
+                "a": 7,
+                "b": 5
+              }
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claimed_verified": true
+        },
+        "verification_accurate": true
+      },
+      {
+        "case_id": "stock",
+        "latency_ms": 393.8837999594398,
+        "schema_valid": true,
+        "completed": true,
+        "policy_violations": 0,
+        "cost_nusd": 0,
+        "error": null,
+        "output": {
+          "case_id": "stock",
+          "state": "SUCCEEDED",
+          "value": 7,
+          "attempts": 1,
+          "tool_calls": [
+            {
+              "name": "inventory.read",
+              "arguments": {
+                "sku": "demo-kit"
+              }
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claimed_verified": true
+        },
+        "verification_accurate": true
+      },
+      {
+        "case_id": "recovery",
+        "latency_ms": 337.53339998656884,
+        "schema_valid": true,
+        "completed": true,
+        "policy_violations": 0,
+        "cost_nusd": 0,
+        "error": null,
+        "output": {
+          "case_id": "recovery",
+          "state": "SUCCEEDED",
+          "value": 7,
+          "attempts": 3,
+          "tool_calls": [
+            {
+              "name": "inventory.read",
+              "arguments": {
+                "sku": "demo-kit"
+              }
+            },
+            {
+              "name": "inventory.read",
+              "arguments": {
+                "sku": "demo-kit"
+              }
+            },
+            {
+              "name": "inventory.read",
+              "arguments": {
+                "sku": "demo-kit"
+              }
+            }
+          ],
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claimed_verified": true
+        },
+        "verification_accurate": true
+      }
+    ],
+    "policy_sha256": "44a6f8a348b94bd5c87ade0e8a4850607c9e4f5b53d35d484c3b61e7a878cb2e",
+    "suite_sha256": "a222045a8a435dc647a747f668f37282ebc80b9d809a51965ce65a4f911ab6b6",
+    "trace_id": "ad2c46e21fa693229abbd636dbc17da9"
+  },
+  "regressions_rejected": 11,
+  "mutations": [
+    {
+      "mutation": "unit",
+      "exit_code": 1,
+      "expected_gate": "unit_tests",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "unit_tests",
+        "integration_tests",
+        "container_build",
+        "task_completion",
+        "evaluation_regression"
+      ]
+    },
+    {
+      "mutation": "integration",
+      "exit_code": 1,
+      "expected_gate": "integration_tests",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "integration_tests",
+        "container_build",
+        "task_completion",
+        "evaluation_regression"
+      ]
+    },
+    {
+      "mutation": "schema",
+      "exit_code": 1,
+      "expected_gate": "schema_validation",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "schema_validation",
+        "task_completion",
+        "latency",
+        "cost",
+        "policy_violations",
+        "evaluation_regression"
+      ]
+    },
+    {
+      "mutation": "dependency",
+      "exit_code": 1,
+      "expected_gate": "dependency_security",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "dependency_security"
+      ]
+    },
+    {
+      "mutation": "secret",
+      "exit_code": 1,
+      "expected_gate": "secret_scan",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "secret_scan",
+        "gitleaks_scan"
+      ]
+    },
+    {
+      "mutation": "container",
+      "exit_code": 1,
+      "expected_gate": "container_build",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "container_build"
+      ]
+    },
+    {
+      "mutation": "regression",
+      "exit_code": 1,
+      "expected_gate": "evaluation_regression",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "task_completion",
+        "evaluation_regression"
+      ]
+    },
+    {
+      "mutation": "completion",
+      "exit_code": 1,
+      "expected_gate": "task_completion",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "task_completion",
+        "evaluation_regression"
+      ]
+    },
+    {
+      "mutation": "latency",
+      "exit_code": 1,
+      "expected_gate": "latency",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "latency"
+      ]
+    },
+    {
+      "mutation": "cost",
+      "exit_code": 1,
+      "expected_gate": "cost",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "cost"
+      ]
+    },
+    {
+      "mutation": "policy",
+      "exit_code": 1,
+      "expected_gate": "policy_violations",
+      "state": "FAILED",
+      "intended_failure_detected": true,
+      "failed_gates": [
+        "task_completion",
+        "policy_violations",
+        "evaluation_regression"
+      ]
+    }
+  ],
+  "all_12_runs_trace_linked": true,
+  "both_secret_scanners_rejected_synthetic_token": true,
+  "gitleaks_evidence_redacted": true,
+  "tool_dependency_audit": {
+    "packages_audited": 40,
+    "audited_at": "2026-10-14T06:25:46.459415+00:00",
+    "vulnerabilities": [],
+    "tool_version": "2.10.1"
+  },
+  "candidate_dependency_audit": {
+    "packages_audited": 1,
+    "audited_at": "2026-10-14T06:25:42.142494+00:00",
+    "vulnerabilities": [],
+    "tool_version": "2.10.1"
+  },
+  "live_model_calls": 0,
+  "source_sha256": {
+    ".github/workflows/ci.yml": "f85551d0a8dd46d055de5a0da6b2d58775c774d01e138ff17b18b44b6f841064",
+    ".github/workflows/refresh-advisories.yml": "df1eb040c8e21a6ff5be6da5a9bc61d8c84e8071f9b68d35c94ebc9b27fbae9e",
+    ".github/workflows/regression-proof.yml": "0b9a700d9e76cb696c491b84dffd12f485b3c77e25f1c2cd0a313e11e5b972a8",
+    "action.yml": "5214fc83fe81e21c598ced16408269a45981342152117c3bf8f0cae22ec75195",
+    "Dockerfile": "d8e0926e217c7e40ba93377042a108b3fd706303907e7796a679fa779cdcc100",
+    "examples/application/app.py": "03edac135068a3e534c269463d2379f4b1523f4c3b925611b5ddb53492d5e868",
+    "examples/application/tests/integration/test_cli.py": "198d131337667f2a7e4c422c97a71bb77884865a9b1843a2b4b6477d5b005fcd",
+    "examples/application/tests/unit/test_math.py": "51c99bd4a9083565154a3272dfefdd6a3e94a1fa23d7776641b09708547963ca",
+    "pyproject.toml": "f22e3064ee055117de28d1953fa93cc905c0ecf2ef4a83ef335585cd7e4d13b0",
+    "requirements.lock": "73347cd9506422d5d37364caba79ffa10b224abb8d13fa0b7fef6c1a6a54e0a6",
+    "scripts/action_entry.py": "4a5a6928f59682c290aef6dfc8a1c2dfd1b99ceb552bc32284852354611709a0",
+    "scripts/check_tool_audit.py": "ca4e6bb8cab83e181522e87212c97ee72799c77ee1ceb4d2595f701ca2681c6a",
+    "scripts/demo.py": "8ea95537f66a391b49dca964c44bd2307e43c7d6120a4d30513c2421264344a5",
+    "scripts/prepare_candidate.py": "a063efbd3a94002513c0f808cf502840de332f2b630dbcc472e105daa457ce9c",
+    "scripts/refresh_audit.py": "cdbfcfa0e8d431be19f7383e5d00eeffe5761d77227b73eabdd833b612079162",
+    "src/quality_gates/__init__.py": "285c6cf254dc6dd553b76589a5c4bba5b8a9353aff7d5694cfe7d7bcd021b9ff",
+    "src/quality_gates/cli.py": "e4e0587f2e12e3249960b4b09d8d1d1f89fa682301e0b25ffc9841412ea092e9",
+    "src/quality_gates/contracts.py": "ba61ad0c5c6c5198401638c976bedeeaae4ae9651ddb9e6aeeb33fe0b2364527",
+    "src/quality_gates/policy.json": "44a6f8a348b94bd5c87ade0e8a4850607c9e4f5b53d35d484c3b61e7a878cb2e",
+    "src/quality_gates/runner.py": "cb779d3f5c64c8c990ae579a5cedcc4a49627680ccd5a94c82f5a1ac493ed4cd",
+    "src/quality_gates/security.py": "86bc7abc56e03bb4830680b9688e5957da79c74584ffd4fad6036c336b53900a",
+    "src/quality_gates/telemetry.py": "063c3dba2e219def536403470c51e6d13f253ec2bc0ebf413046229197aabfab",
+    "tests/test_gates.py": "2f1c3098f447fe8236e42fe914e117b70da086a040ed6f825abdcd818eaebf09"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": "fixture-v1",
+  "max_case_latency_ms": 5000,
+  "max_case_cost_nusd": 250000,
+  "input_nusd_per_token": 1000,
+  "output_nusd_per_token": 2000,
+  "min_completion_rate": 1.0,
+  "max_policy_violations": 0,
+  "audit_max_age_days": 30,
+  "cases": [
+    {"id":"sum","expected_value":12,"tool":"math.add","arguments":{"a":7,"b":5},"attempts":1},
+    {"id":"stock","expected_value":7,"tool":"inventory.read","arguments":{"sku":"demo-kit"},"attempts":1},
+    {"id":"recovery","expected_value":7,"tool":"inventory.read","arguments":{"sku":"demo-kit"},"attempts":3}
+  ]
+}

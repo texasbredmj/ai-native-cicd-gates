@@ -1,0 +1,23 @@
+name: optional-advisory-refresh
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  live-advisory-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.lock .
+      - run: python scripts/refresh_audit.py --target examples/application
+      - run: python scripts/refresh_audit.py --target .
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refreshed-advisory-snapshots
+          path: |
+            security/dependencies.json
+            examples/application/security/dependencies.json
