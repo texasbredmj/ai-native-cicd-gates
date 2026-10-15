@@ -1,5 +1,14 @@
 # AI-Native CI/CD Quality Gates
 
+## Start Here
+
+[Launch the complete employer demonstration on GitHub](https://github.com/texasbredmj/ai-engineering-portfolio#start-here).
+
+The public portfolio contains this project's runnable employer source, sample fixtures and verified demonstration, plus one Codespaces launch for all eight projects. No separate private-repository access is required. Run `python scripts/project_demo.py 7` from the portfolio Codespace to demonstrate this project.
+
+The instructions below describe this repository's standalone version. The integrated platform and its current verification evidence are maintained in the portfolio.
+
+
 Project 07 of AI Systems Engineering Lab: a reusable GitHub composite action and Python CLI
 that reject an AI application's release when measured task outcomes regress. A checked-in,
 deterministic application makes each gate demonstrable without model credentials or paid calls.
